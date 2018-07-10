@@ -1,0 +1,11 @@
+pre {
+padding: 5px;
+background-color: #eeffcc;
+color: #333333;
+font-size: 120%;
+line-height: 150%;
+border: 1px solid #ac9;
+border-left: none;
+border-right: none;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
