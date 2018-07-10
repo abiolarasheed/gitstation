@@ -1,0 +1,66 @@
+/* main */
+main {
+    margin-top: 4rem;
+}
+
+/* Navbar */
+nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top {
+    background-color: #6441a5;
+    background: -webkit-linear-gradient(36deg, #6441A5 10%, #2a0845 90%);
+    background: -moz-linear-gradient(36deg, #6441A5 10%, #2a0845 90%);
+    background: -ms-linear-gradient(36deg, #6441A5 10%, #2a0845 90%);
+    background: -o-linear-gradient(36deg, #6441A5 10%, #2a0845 90%);
+    background: linear-gradient(36deg, #6441A5 10%, #2a0845 90%);
+}
+
+/* Navbar Image */
+.navbar-img {
+    height: 36px;
+    width: 36px;
+    margin-right: .5rem!important;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-color: #fff;
+    border-radius: 3px 3px;
+}
+
+/* Home Page Jumbotron */
+.jumbotron {
+    background-color: #6441a5;
+    background: -webkit-linear-gradient(36deg, #6441A5 10%, #2a0845 90%);
+    background: -moz-linear-gradient(36deg, #6441A5 10%, #2a0845 90%);
+    background: -ms-linear-gradient(36deg, #6441A5 10%, #2a0845 90%);
+    background: -o-linear-gradient(36deg, #6441A5 10%, #2a0845 90%);
+    background: linear-gradient(36deg, #6441A5 10%, #2a0845 90%);
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+}
+
+/* Home Page Button */
+a.btn.btn-light.btn-lg,
+a.btn.btn-light.btn-lg:hover,
+a.btn.btn-light.btn-lg:active,
+a.btn.btn-light.btn-lg:focus
+{
+    font-weight: 500;
+    color: #7952b3;
+    border-color: #7952b3;
+
+}
+
+/* Card */
+.title-small {
+    color: #141517;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23px;
+    margin: 6px 0 0;
+}
+
+.text-time {
+    color: #7952b3;
+    font-weight: 600;
+}

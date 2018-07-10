@@ -1,0 +1,61 @@
+{% load i18n static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="/" aria-label="GitStation">
+            <img class="navbar-img" src="{% static 'img/gitstation.ico' %}">
+            GitStation
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">{% trans "Install" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">{% trans "Documentation" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">{% trans "Community" %}</a>
+            </li>
+{% if request.user.is_authenticated %}
+            <li class="nav-item dropdown">
+                <a class="nav-item nav-link dropdown-toggle"  href="" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="true">
+                    <img class='avatar' src='{{THUMB_URL}}'
+                         alt="{{request.user.username|truncatechars:12}}"
+                    />
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="{% url 'wall' request.user.username %}">{% trans "My Wall" %}</a>
+                    <a class="dropdown-item" href="{% url 'profile' %}">{% trans "Account" %}</a>
+                    <a class="dropdown-item" href="{% url 'view_emails' request.user.username %}">
+                        {% trans "Emails" %}
+                    </a>
+                    <a class="dropdown-item" href="{% url 'view_password' request.user.username %}">
+                        {% trans "Password" %}
+                    </a>
+                    <a class="dropdown-item" href="{% url 'view_ssh_key' request.user.username %}">
+                        {% trans "SSH Keys" %}
+                    </a>
+                    <a class="dropdown-item" href="{% url 'view_gnupg_key' request.user.username %}">
+                        {% trans "GnuPG Keys" %}
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">{% trans "Logout" %}</a>
+            </li>
+{% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">{% trans "Sign In" %}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'signup' %}">{% trans "Register" %}</a>
+            </li>
+{% endif %}
+          </ul>
+        </div>
+      </div>
+</nav>

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load gravatar %}
+{% load humanize %}
+{% block css %}
+<link href='http://fonts.googleapis.com/css?family=Droid+Serif|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/static/vertical-timeline/css/reset.css"> <!-- CSS reset -->
+<link rel="stylesheet" href="/static/vertical-timeline/css/style.css"> <!-- Resource style -->
+{% endblock %}
+{% block main_content %}
+<br><br>
+
+<div class="span9">
+
+<div class="pull-right">
+        <a href='#' class='btn'>
+            <i class="icon-th-list icon-black"></i>
+        </a>
+</div>
+
+{% include 'gitapp/repoinfo.html'%}
+
+
+<div class="bordered">
+<span class="muted"><i class="icon-list icon-black"></i> {{num_lines}} Lines <i class="icon-file icon-black"></i> {{size}} Bytes</span>
+
+<strong class="text-info offset1">{{filename}}</strong>
+
+
+    <div class="btn-group pull-right">
+        <a class='btn' href='#' class="btn"><i class="icon-text-width icon-black"></i> Text</a>
+        <a class='btn' href='#' class="btn"><i class="icon-edit icon-black"></i> Edit</a>
+        <a class='btn' href='#' class="btn"><i class=" icon-backward icon-black"></i> History</a>
+        <a class='btn' href='#' class="btn"><i class="icon-trash icon-black"></i> Delete</a>
+    </div>
+   <div class="clearfix"></div>
+</div><!--bordered-->
+
+<div class="span9 gs-profile">
+<div><a class='btn' href='{{alt_path}}'><i class="icon-list icon-black"></i></a></div>
+<section id="cd-timeline" class="cd-container">
+    {% for commit in commits %}
+        <div class="cd-timeline-block">
+           {% if commit.merge %}
+	   <div class="cd-timeline-img cd-movie">
+           {%else%}
+            <div class="cd-timeline-img cd-picture">
+            {%endif%}
+                <img src="/static/vertical-timeline/img/cd-icon-location.svg" alt="icon location">
+            </div> <!-- cd-timeline-img -->
+            <div class="cd-timeline-content">
+            <img src="/static/img/gitstation/sizes/gitstation-24.png" alt="{{commit.author}}">
+             <h2>{{commit.author|truncatechars:9 | title }}</h2>
+		<p>{{commit.message}}</p>
+                {% if commit.merge %}
+		<a href="#0" class="btn btn-danger"> {{ commit.merge|truncatechars:10 }}</a> 
+                <i class='icon-arrow-right'></i> 
+
+                {% endif %}                
+		<a href="#0" class="btn btn-primary"> {{commit.commit|truncatechars:15}}</a>
+		<span class="cd-date">Commits on {{commit.date}}</span>
+	    </div> <!-- cd-timeline-content -->
+	</div> <!-- cd-timeline-block -->
+    {% endfor %}
+</section> <!-- cd-timeline -->
+</div><!--span9-->
+
+
+
+
+
+</div><!--span9-->
+{% block js %}
+<script src="/static/vertical-timeline/js/modernizr.js"></script> <!-- Modernizr -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="/static/vertical-timeline/js/main.js"></script> <!-- Resource jQuery -->
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,44 @@
+# Packaging
+*/postgres.py
+celery_dev
+*.pyc
+*.egg-info
+/dist/
+/build/
+# Vagrant
+.vagrant
+# Temporary/OS files
+*.swp
+*.swo
+*.*~
+.~lock.*
+*.DS_Store
+
+# IDE files
+.project
+.pydevproject
+.settings
+.idea
+.metadata/*
+# Docs
+/docs/build/*
+*.pdf
+TODO
+# media
+media/*
+*/.git
+*/tmp/*
+*/dev_settings.py
+.get_domains.py
+.OLD_TEMPLATE/*
+.OLD_TEMPLATE
+MyProject.komodoproject
+fixtures
+fixtures/*
+*/compression
+*/transit
+*/repo
+*/repo_media
+*/static
+*/media
+*/encrypt

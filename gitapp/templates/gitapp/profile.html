@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags django_tables2 i18n repositories %}
+{% block title %} Profile {% endblock %}
+{% block main_content %}
+<div class="row">
+    <div class="col-md-3">
+        <h5 class="muted text-center"> Total Repository
+            <span class="badge badge-info">{{total_repos}}</span>
+        </h5>
+            {% render_table table %}
+    </div>
+    <div class="col-md-9">
+        {% include 'gitapp/dashboard.html' %}
+    </div>
+</div>
+{% endblock %}

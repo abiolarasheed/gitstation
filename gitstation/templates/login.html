@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block main_content %}
+<div class="row">
+    <div class="col-md-8">
+        <img src='/static/img/gitstation/sizes/gitstation-512.png' alt='image'>
+    </div>
+    <div class="col-md-4 bg-light">
+        {% load crispy_forms_tags %} {% crispy form %}
+    </div>
+</div>
+{% endblock %}

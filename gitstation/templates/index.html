@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block css %}
+{% endblock %}
+{% block main_content %}
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-3">
+            {% trans "Built for developers" %}
+        </h1>
+        <p>{% trans "GitStation is a social coding platform that enables teams to plan, collaborate, document, test and deploy their projects." %}</p>
+        <p>
+            <a class="btn btn-light btn-lg" href="#" role="button">{% trans "Get started" %}</a>
+        </p>
+    </div>
+</div>
+
+{% if projects.exists %}
+<div class="container">
+    <div class="text-center">
+        <h2>{% trans "Latest Projects" %}</h2>
+    </div>
+    <div class="row">
+        {% for project in projects %}
+            {% include "project_card.html" %}
+        {% endfor %}
+    </div>
+    <hr>
+</div>
+{% endif %}
+{% endblock %}

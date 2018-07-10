@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load gravatar %}
+{% load humanize %}
+{% block main_content %}
+<br><br>
+<div class="span9">
+<div class="pull-right">
+        <a href='#' class='btn'>
+            <i class="icon-th-list icon-black"></i>
+        </a>
+</div>
+{% include 'gitapp/repoinfo.html'%}
+<div class="bordered">
+<span class="muted"><i class="icon-list icon-black"></i> {{num_lines}} Lines <i class="icon-file icon-black"></i> {{size}} Bytes</span>
+<strong class="text-info offset1">{{filename}}</strong>
+    <div class="btn-group pull-right">
+        <a class='btn' href='#' class="btn"><i class="icon-text-width icon-black"></i> Text</a>
+        <a class='btn' href='#' class="btn"><i class="icon-edit icon-black"></i> Edit</a>
+        <a class='btn' href='#' class="btn"><i class=" icon-backward icon-black"></i> History</a>
+        <a class='btn' href='#' class="btn"><i class="icon-trash icon-black"></i> Delete</a>
+    </div>
+   <div class="clearfix"></div>
+</div><!--bordered-->
+<div><a class='btn' href='{{alt_path}}'><i class="icon-list icon-black"></i></a></div>
+    <br>
+
+        {% if forloop.counter0 %}<hr>{%endif%}<i class="icon-screenshot"></i>
+
+{% for commit in commits%}
+
+    <div class="row">
+
+    <div class="span1">
+        <small class="muted">
+            {{commit.date.date}}
+        </small>
+    </div>
+
+    <div class="span8 offset1">{% include "gitapp/commit_snippet.html" %}</div>
+    </div>
+
+
+
+       
+
+
+
+
+
+
+{%endfor%}
+
+</div><!--span9-->
+
+
+
+
+
+
+
+
+<div class="span9">
+{% if commits.has_previous or commits.has_next %}
+
+<div class="pager">
+    <span class="">
+        {% if commits.has_previous %}
+            <a href="?page={{ commits.previous_page_number }}">&larr; Older</a>
+        {% endif %}
+
+        <span class="">
+            Page {{ commits.number }} of {{ commits.paginator.num_pages }}.
+        </span>
+
+        {% if commits.has_next %}
+            <a href="?page={{ commits.next_page_number }}">next&rarr;</a>
+        {% endif %}
+    </span>
+</div>
+{% endif %}
+</div><!--span9-->
+
+
+
+
+
+
+
+
+
+{% endblock %}

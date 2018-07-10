@@ -1,0 +1,12 @@
+{% load crispy_forms_tags i18n %}
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="notifications-tab" data-toggle="tab" href="#notifications" role="tab"
+           aria-controls="notifications" aria-selected="false">{% trans "Notifications" %}</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="notifications" role="tabpanel" aria-labelledby="notifications-tab">
+      {% trans "No notifications" %}
+  </div>
+</div>

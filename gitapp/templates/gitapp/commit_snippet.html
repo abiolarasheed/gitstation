@@ -1,0 +1,28 @@
+{% load gravatar %}
+{% load humanize %}
+<div>
+           <small class="muted">Commits on {{commit.date.date}}</small>
+
+            <p><strong>{{commit.title | title}} </strong>
+                
+            <div class="btn-group pull-right">
+                <a href="/commit/{{commit.commit}}/" class="btn">{{commit.commit | truncatechars:10}}</a>
+                <button class="btn"><i class="icon-chevron-left"></i><i class="icon-chevron-right"></i></button>
+            </div>
+
+
+        <div>
+            {% gravatar commit.email 36 commit.email %}
+           <small class="muted">{{commit.author}}  authored {{commit.date |naturaltime }} </small> 
+           <button type="button" class="btn btn-mini" data-toggle="collapse" data-target="#{{commit.commit}}">
+            ..</button>
+            <div id="{{commit.commit}}" class="collapse out">{{commit.message}}</div></p>
+        </div>
+
+        <div>
+            {% if commit.merge %}
+                <a href="#0" class="btn btn-danger"> {{ commit.merge|truncatechars:10 }}</a> 
+                <i class='icon-arrow-right'></i>
+            {% endif %} 
+        </div> 
+</div> 

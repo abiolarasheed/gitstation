@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load django_tables2 gravatar humanize i18n repositories %}
+{% block main_content %}
+<br><br>
+<div class="row">
+    <div class="col-md-10">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-code-tab" data-toggle="tab" href="#nav-code" role="tab"
+                   aria-controls="nav-code" aria-selected="true">{% trans "Code "%}
+                </a>
+
+                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
+                   aria-controls="nav-profile" aria-selected="false">{% trans "Profile" %}</a>
+
+                <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+                   aria-controls="nav-contact" aria-selected="false">{% trans "Contact" %}</a>
+
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-code" role="tabpanel" aria-labelledby="nav-code-tab">
+                <p>{{project.description}}</p>
+                <p>
+                    <small class='text-muted'>clone URL</small>
+                    <pre class='shell'>{{ project.url }}</pre>
+                </p>
+                <div class="container">
+                    {% include 'gitapp/repoinfo.html' %}
+                    {% include 'gitapp/progressbar.html' %}
+                </div>
+                {% gravatar user.email 20 %}
+                <a class="" href="{% url 'wall' project.owner.username %}"> {{ project.owner }}</a>
+                <span class="text-muted">{{project.status}}</span>
+                <div class="container">
+                    {% render_table table %}
+
+                {% if project.get_readme_file %}
+                   {% with readme_file as code %}
+                       {% include 'gitapp/display_readme.html' %}
+                   {% endwith %}
+                {% else %}
+                    {{project.description}}
+                {% endif %}
+
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                {% include 'gitapp/wiki.html'%}
+                {% include 'gitapp/download.html'%}
+                {% include 'gitapp/status.html' %}
+            </div>
+            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+            {% include 'gitapp/project_sidebar.html' %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

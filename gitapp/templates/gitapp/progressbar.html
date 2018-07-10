@@ -1,0 +1,9 @@
+<div class="progress" style="height: 20px;">
+    {% for key, value in project.file_percentage.items %}
+<div class="progress-bar {% cycle 'bg-info' 'bg-success' 'bg-warning' 'bg-danger' %}"
+     role="progressbar" style="width: {{value}}%;" aria-valuenow="{{value}}"
+     aria-valuemin="0" aria-valuemax="100">
+    {{key}}
+</div>
+    {% endfor %}
+</div>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load gravatar humanize repositories %}
+{% block main_content %}
+<div class='row'>
+    <div class='col-md-3'>
+        {% gravatar user.email 75 %}
+        <address>
+            <i class="icon-user"></i>
+            <strong> {{user.username|title}}</strong><br>
+            <a href='#' class='disabled'>
+                <i class="icon-map-marker"></i>
+            </a><br>
+            <a href="mailto:#">
+                <i class="icon-envelope"></i>
+                {{user.email}}
+            </a><br>
+            <a href='#' class='disabled'>
+                <i class="icon-time icon-black"></i>
+                Joined on {{ user.date_joined }}
+            </a><br>
+        </address>
+    </div>
+        {% for project in public_repos %}
+            {% include "gitapp/project_card.html" %}
+        {% endfor %}
+</div>
+{% endblock %}

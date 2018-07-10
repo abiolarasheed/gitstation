@@ -1,0 +1,13 @@
+<div class="span9">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a id='readme' href="#readme" class="disabled"><i class="icon-book icon-black"></i>  README</a>
+        </li>
+    </ul>
+{% load pygmentify %}
+{% pygment %}
+    <pre lang="html">
+        {{code}}
+    </pre>
+{% endpygment %}
+</div>
