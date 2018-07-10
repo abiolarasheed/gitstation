@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load repositories %}
+{% load django_tables2 crispy_forms_tags %}
+{% load django_tables2 %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Repositories
+{% endblock %}
+{% block main_content %}
+<br><br>
+<div class="container">
+    <div class="row">
+        <div style="margin-top: 0px; width: 852px; height: 526px; margin-left: 0px;">
+            {% crispy form %}
+        </div>
+    </div><!-- end row-->
+</div><!-- end container-->
+{% endblock %}

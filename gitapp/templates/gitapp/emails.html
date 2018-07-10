@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags django_tables2 i18n%}
+{% block title %}Pgp keys{% endblock %}
+{% block main_content %}
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="add-email-tab" data-toggle="tab" href="#add-email" role="tab"
+           aria-controls="add-email" aria-selected="true">{% trans "Add" %}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="email-change-tab" data-toggle="tab" href="#email-change" role="tab"
+           aria-controls="email-change" aria-selected="true">{% trans "Change" %}</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="view-pgp-tab" data-toggle="tab" href="#view-pgp" role="tab"
+           aria-controls="view-pgp" aria-selected="true">{% trans "View" %}</a>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="add-email" role="tabpanel" aria-labelledby="add-email-tab">
+    {% crispy add_email_form %}
+  </div>
+  <div class="tab-pane fade" id="email-change" role="tabpanel" aria-labelledby="email-change-tab">
+    {% crispy email_change_form %}
+  </div>
+  <div class="tab-pane fade" id="view-pgp" role="tabpanel" aria-labelledby="view-pgp-tab">
+      {% render_table table %}
+  </div>
+</div>
+{% endblock %}
+
+

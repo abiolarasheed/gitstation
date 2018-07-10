@@ -1,0 +1,15 @@
+<div class="btn-group">
+{% if project.has_wiki %}
+    <a class='btn' href="{% url 'read_wiki' project.repo.name project.name %}">
+        Read Wiki <i class="icon-book icon-black"></i>
+    </a>
+    <a class='btn' href="{% url 'update_wiki' project.repo.name project.name %}">
+        Edit Wiki <i class="icon-edit icon-black"></i></a>
+    <a class='btn' href="{% url 'delete_wiki' project.repo.name project.name %}">
+        Delete Wiki <i class="icon-edit icon-black"></i></a>
+{% else %}
+    <a class='btn' href="{% url 'create_wiki' project.repo.name project.name %}">
+    Create Wiki <i class="icon-pencil icon-black"></i>
+    </a>
+{% endif %}
+</div>

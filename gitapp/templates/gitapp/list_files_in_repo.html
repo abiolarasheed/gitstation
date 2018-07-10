@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load humanize repositories %}
+{% block main_content %}
+<br><br>
+<div class="container">
+
+
+      <!-- Jumbotron -->
+      <div class="jumbotron">
+        <h1 class="text-center">{{project | title }}</h1>
+      </div>
+
+    <div class="row">
+
+        <div class="span9">
+            <div class="span9"><p>{{project.description}}</p></div>
+            <div class="span9"><p><small class='muted'>clone URL</small>
+            <pre class='shell'> {{ project.url }} </pre></p>
+
+           </div>
+            <div class="span9">
+                {% include 'gitapp/progressbar.html' %}
+                {% include 'gitapp/repoinfo.html'%}
+                <div class="btn-group">
+                    <a class="btn" href="{% url 'wall' project.owner.username %}"> {{ project.owner }} </a>
+                {{project.stars}}
+                </div><!--end btn-group-->
+                {% include 'gitapp/wiki.html'%}
+                {% include 'gitapp/download.html'%}
+
+            <h3>source</h3>
+            <small class='muted'>{{project.status}}</small>
+            </div><!--end span9-->
+            {% load django_tables2 %} 
+            {% render_table table %}
+            <div class="span9">
+                {{project.description}}
+            </div><!--end span9-->
+        </div><!--end span9-->
+        <div class="span3">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+         {% include 'gitapp/project_sidebar.html' %}
+        </div>
+    </div><!--endrow -->
+</div><!--end container-->
+{% endblock %}

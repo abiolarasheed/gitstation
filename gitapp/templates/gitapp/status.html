@@ -1,0 +1,22 @@
+<div class="btn-group">
+  {% if project.is_private %}
+  <a class="btn disabled" href="#" >
+  <i class="icon-lock icon-black"></i> Status
+   </a>
+   {% else %}
+  <a class="btn disabled" href="#" >
+     <i class="icon-globe icon-black"></i> Status
+     </a>
+     {% endif %}
+{% if request.user == project.user %}
+  {% if project.is_private %}
+  <a class="btn" href="{% url 'change_repo_status' project.slug 'public' %}" >
+   <i class="icon-globe icon-black"></i> Change
+   </a>
+   {% else %}
+    <a class="btn" href="{% url 'change_repo_status' project.slug 'private' %}">
+       <i class="icon-lock icon-black"></i> Change
+     </a>
+     {% endif %}
+{% endif %}
+</div>

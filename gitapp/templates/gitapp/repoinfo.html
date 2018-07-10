@@ -1,0 +1,37 @@
+<ul class="nav">
+    <li class="nav-item">
+        <a class="nav-link active" href="{{project.get_current_branch_url}}">
+            <i class="icon-time icon-black"></i>
+            <strong class=''> {{project.number_of_commits}}</strong>
+            <small class='muted'> commits </small>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            <i class="icon-random icon-black"></i>
+            <strong class=''> {{project.number_of_branches}}</strong>
+            <small class='muted'> branches</small>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            <i class="icon-tags icon-black"></i>
+            <strong class=''>{{project.number_of_contributors}}</strong>
+            <small class='muted'> releases</small>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#">
+            <i class="icon-user icon-black"></i>
+            <strong class=''> {{project.number_of_contributors}}</strong>
+            <small class='muted'> contributors</small>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="{% url 'star' project.slug %}">
+            <i class="icon-user icon-black"></i>
+            <strong class=''> {{project.stars}}</strong>
+            <small class='muted'> stars</small>
+        </a>
+    </li>
+</ul>
